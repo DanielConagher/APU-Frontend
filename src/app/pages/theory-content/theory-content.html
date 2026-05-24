@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- COLUMNA IZQUIERDA -->
+    <div class="side left"></div>
+
+    <!-- CONTENIDO CENTRAL -->
+    <main class="main-wrapper">
+
+        <!-- HEADER -->
+        <header>
+
+            <div class="logo">
+                APU
+            </div>
+
+            <nav>
+                <a href="#">Inicio</a>
+                <a href="#">Contenido</a>
+                <a href="#">Contacto</a>
+            </nav>
+
+        </header>
+
+        <!-- CONTENIDO -->
+        <main class="container">
+
+            <div class="date">
+                Mayo 2026
+            </div>
+
+            <h1>
+                Antecedentes
+            </h1>
+
+            <div class="author">
+                Prevención de Desastres Naturales
+            </div>
+
+            <!-- IMAGEN PRINCIPAL -->
+            <div class="main-image" *ngIf="contenido?.imagenes?.length">
+
+                <img [src]="
+                'http://localhost:8080' +
+                contenido!.imagenes[0]
+            " alt="Imagen teoría">
+
+            </div>
+
+            <!-- TEXTO -->
+            <section class="content">
+
+                <h2>
+                    Debemos entender casos anteriores de sismos en el Perú
+                </h2>
+
+                <p>
+                    {{ contenido?.teoria }}
+                </p>
+
+            </section>
+
+            <!-- VIDEO -->
+            <section class="video-section" *ngIf="contenido?.videos?.length">
+
+                <iframe [src]="
+                contenido!.videos[0] | safe
+            " title="Video" frameborder="0" allowfullscreen>
+                </iframe>
+
+            </section>
+
+            <!-- COMENTARIOS -->
+            <section class="comments">
+
+                <div class="comments-title">
+                    Comentarios
+                </div>
+
+                <!-- INPUT -->
+                <div class="comment-input">
+
+                    <div class="avatar current-user"></div>
+
+                    <input type="text" placeholder="Escribe un comentario...">
+
+                    <button class="publish-btn">
+                        Publicar
+                    </button>
+
+                </div>
+
+                <!-- LISTA -->
+                <div class="comment" *ngFor="
+                    let comentario
+                    of contenido?.comentarios
+                ">
+
+                    <div class="avatar"></div>
+
+                    <div class="comment-content">
+
+                        <div class="comment-header">
+
+                            <span class="username">
+                                {{ comentario.estudiante }}
+                            </span>
+
+                            <span class="time">
+                                Ahora
+                            </span>
+
+                        </div>
+
+                        <p class="comment-message">
+                            {{ comentario.comentario }}
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+        <!-- FOOTER -->
+        <footer>
+
+            <div>
+                © 2026 APU - Prevención de Desastres Naturales
+            </div>
+
+            <div class="footer-links">
+
+                <a href="#">Inicio</a>
+                <a href="#">Contenido</a>
+                <a href="#">Contacto</a>
+
+            </div>
+
+        </footer>
+
+    </main>
+
+    <!-- COLUMNA DERECHA -->
+    <div class="side right"></div>
+</body>
+
+</html>
