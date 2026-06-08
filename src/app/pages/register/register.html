@@ -1,0 +1,87 @@
+<div class="register-container">
+
+    <div class="card">
+
+        <h1>
+            Registro
+        </h1>
+
+        <form
+            (ngSubmit)="registrar()">
+
+            <input
+                [(ngModel)]="primerNombre"
+                name="primerNombre"
+                placeholder="Primer nombre">
+
+            <input
+                [(ngModel)]="segundoNombre"
+                name="segundoNombre"
+                placeholder="Segundo nombre">
+
+            <input
+                [(ngModel)]="primerApellido"
+                name="primerApellido"
+                placeholder="Primer apellido">
+
+            <input
+                [(ngModel)]="segundoApellido"
+                name="segundoApellido"
+                placeholder="Segundo apellido">
+
+            <input
+                type="number"
+                [(ngModel)]="edad"
+                name="edad"
+                placeholder="Edad">
+
+            <input
+                type="email"
+                [(ngModel)]="correo"
+                name="correo"
+                placeholder="Correo">
+
+            <input
+                type="password"
+                [(ngModel)]="contrasena"
+                name="contrasena"
+                placeholder="Contraseña">
+
+            <button
+                type="submit">
+
+                Registrarme
+
+            </button>
+
+        </form>
+
+        <div
+            *ngIf="error"
+            class="error">
+
+            {{ error }}
+
+        </div>
+
+        <div
+            *ngIf="mensaje"
+            class="success">
+
+            {{ mensaje }}
+
+        </div>
+
+        <div class="back-link">
+
+            <a routerLink="/login">
+
+                Volver al login
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>

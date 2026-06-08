@@ -1,0 +1,86 @@
+<!-- NAVBAR -->
+
+<!-- NAVBAR GLOBAL -->
+    <app-navbar></app-navbar>
+
+<main class="aprendizaje-container">
+
+  <h1>
+
+    Mapa de Aprendizaje
+
+  </h1>
+
+  <p class="subtitulo">
+
+    Selecciona una emergencia para comenzar tu ruta de aprendizaje.
+
+  </p>
+
+  <div class="mapa">
+
+    <svg
+      class="rutas"
+      viewBox="0 0 1200 700">
+
+      <path d="M250 180 C 380 180, 450 250, 520 330" />
+
+      <path d="M680 330 C 780 250, 880 180, 1020 180" />
+
+      <path d="M520 430 C 430 520, 350 550, 250 560" />
+
+      <path d="M680 430 C 800 520, 900 550, 1020 560" />
+
+    </svg>
+
+    <button
+
+      *ngFor="
+        let desastre of desastres;
+        let i = index
+      "
+
+      class="burbuja"
+
+      [ngClass]="
+        obtenerClase(i)
+      "
+
+      (click)="
+        abrirMapa(
+          desastre.idTipoDesastre
+        )
+      "
+
+    >
+
+      <i
+        [class]="
+          obtenerIcono(
+            desastre.nombre
+          )
+        "
+      >
+      </i>
+
+      <span>
+
+        {{ desastre.nombre }}
+
+      </span>
+
+      <small>
+
+        {{
+          desastre.porcentajeAvance
+        }}%
+
+      </small>
+
+    </button>
+
+  </div>
+
+</main>
+
+ <app-footer></app-footer>
