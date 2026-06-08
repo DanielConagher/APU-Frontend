@@ -1,0 +1,60 @@
+<!-- COLUMNAS -->
+<div class="side left"></div>
+
+<div class="main-wrapper">
+
+    <!-- NAVBAR GLOBAL -->
+    <app-navbar></app-navbar>
+
+    <!-- BOTÓN VOLVER -->
+    <div class="top-bar">
+        <button class="volver" (click)="volver()">
+            ← Volver al aprendizaje
+        </button>
+    </div>
+
+    <!-- HEADER DESASTRE -->
+    <div class="header-desastre">
+        <span class="icon">🌍</span>
+        <span>{{ nombreDesastre }}</span>
+    </div>
+
+    <!-- MAPA -->
+    <div class="camino">
+
+        <div *ngFor="let nivel of niveles; let i = index"
+             class="nivel"
+             [ngClass]="{
+                'nivel-azul': i % 2 === 0,
+                'nivel-amarillo': i % 2 !== 0
+             }">
+
+            <div class="nivel-header">
+                Nivel {{ nivel[0].numeroNivel }}
+            </div>
+
+            <div class="nivel-contenido">
+
+                <div *ngFor="let burbuja of nivel"
+                     class="burbuja"
+                     [ngClass]="{
+                        bloqueado: burbuja.estado === 0,
+                        completado: burbuja.estado === 1,
+                        proceso: burbuja.estado === 2
+                     }"
+                     (click)="abrirContenido(burbuja)">
+
+                    {{ burbuja.titulo }}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+ <app-footer></app-footer>
+<div class="side right"></div>
+

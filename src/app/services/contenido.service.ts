@@ -16,7 +16,12 @@ export class ContenidoService {
     private http: HttpClient
   ) { }
 
-  getContenido(): Observable<Contenido> {
-    return this.http.get<Contenido>(this.apiUrl);
+  getContenido(
+    idContenido: number
+  ) {
+
+    return this.http.get<Contenido>(
+      `http://localhost:8080/contenido/${idContenido}`
+    );
   }
 }

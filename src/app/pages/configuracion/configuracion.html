@@ -1,0 +1,79 @@
+<app-navbar></app-navbar>
+
+<section class="configuracion-container">
+
+  <div class="perfil-card">
+
+    <h2>Mi perfil</h2>
+
+    <div class="perfil-form">
+
+      <!-- NOMBRE -->
+      <label>Nombre</label>
+      <input [(ngModel)]="nombre" type="text">
+      <div class="error" *ngIf="errores?.primerNombre">
+        {{ errores.primerNombre }}
+      </div>
+
+      <!-- SEGUNDO NOMBRE -->
+      <label>Segundo nombre</label>
+      <input [(ngModel)]="segundoNombre" type="text">
+      <div class="error" *ngIf="errores?.segundoNombre">
+        {{ errores.segundoNombre }}
+      </div>
+
+      <!-- PRIMER APELLIDO -->
+      <label>Primer apellido</label>
+      <input [(ngModel)]="primerApellido" type="text">
+      <div class="error" *ngIf="errores?.primerApellido">
+        {{ errores.primerApellido }}
+      </div>
+
+      <!-- SEGUNDO APELLIDO -->
+      <label>Segundo apellido</label>
+      <input [(ngModel)]="segundoApellido" type="text">
+      <div class="error" *ngIf="errores?.segundoApellido">
+        {{ errores.segundoApellido }}
+      </div>
+
+      <!-- CORREO -->
+      <label>Correo</label>
+      <input [(ngModel)]="correo" type="email">
+      <div class="error" *ngIf="errores?.correo">
+        {{ errores.correo }}
+      </div>
+
+      <!-- UBICACIÓN -->
+      <label>Ubicación</label>
+      <select [(ngModel)]="idUbicacion">
+
+        <option *ngFor="let u of ubicaciones"
+                [value]="u.idUbicacion">
+
+          {{ u.nombre }}
+
+        </option>
+
+      </select>
+
+      <div class="error" *ngIf="errores?.idUbicacion">
+        {{ errores.idUbicacion }}
+      </div>
+
+      <!-- BOTÓN -->
+      <button (click)="guardar()">
+        Guardar cambios
+      </button>
+
+      <!-- ERROR GENERAL -->
+      <div class="error" *ngIf="errores?.message">
+        {{ errores.message }}
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+ <app-footer></app-footer>
