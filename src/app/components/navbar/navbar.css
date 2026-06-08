@@ -72,6 +72,7 @@ nav a:hover::after{
     display:flex;
     align-items:center;
     gap:15px;
+    position: relative;
 }
 
 .user-section img{
@@ -121,4 +122,84 @@ nav a:hover::after{
         gap: 10px;
         flex-wrap: wrap;
     }
+}
+
+.logout-btn {
+
+    border: none;
+
+    background: #ef4444;
+
+    color: white;
+
+    padding: 8px 14px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+    transition: .2s;
+}
+
+.logout-btn:hover {
+
+    background: #dc2626;
+
+}
+
+.menu-icon {
+
+    cursor: pointer;
+
+}
+
+.menu-usuario {
+
+    position: absolute;
+
+    top: 55px;
+
+    right: 0;
+
+    background: white;
+
+    border-radius: 10px;
+
+    box-shadow:
+      0 5px 20px rgba(
+        0,0,0,.15
+      );
+
+    padding: 10px;
+
+    z-index: 1000;
+
+}
+
+.menu-usuario button {
+
+    border: none;
+
+    background: none;
+
+    cursor: pointer;
+
+    padding: 10px 15px;
+
+    width: 100%;
+
+    text-align: left;
+
+    font-size: 14px;
+
+}
+
+.menu-usuario button:hover {
+
+    background: #f3f4f6;
+
+    border-radius: 6px;
+
 }

@@ -21,7 +21,7 @@ export class ProgresoService {
 
   constructor(
     private http: HttpClient
-  ) {}
+  ) { }
 
   obtenerProgreso():
     Observable<ProgresoAprendizaje[]> {
@@ -42,5 +42,36 @@ export class ProgresoService {
     return this.http.get<
       ProgresoAprendizaje[]
     >(this.apiUrl, { headers });
+  }
+
+  completarContenido(
+    idContenido: number
+  ) {
+
+    const token =
+      localStorage.getItem(
+        'token'
+      );
+
+    return this.http.post(
+
+      'http://localhost:8080/progreso/completar',
+
+      {
+        idContenido
+      },
+
+      {
+        headers:
+          new HttpHeaders({
+
+            Authorization:
+              `Bearer ${token}`
+
+          }),
+          responseType: 'text'
+      }
+
+    );
   }
 }
