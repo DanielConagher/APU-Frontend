@@ -412,3 +412,51 @@ footer {
         text-align: center;
     }
 }
+
+.publish-btn:disabled {
+
+    opacity: .5;
+
+    cursor: not-allowed;
+}
+
+.acciones {
+
+    width: 100%;
+
+    max-width: 700px;
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-top: 30px;
+}
+
+.siguiente-btn {
+
+    background: #22c55e;
+
+    color: white;
+
+    border: none;
+
+    padding: 14px 24px;
+
+    border-radius: 12px;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.siguiente-btn:hover {
+
+    transform: scale(1.05);
+
+    background: #16a34a;
+}

@@ -82,10 +82,15 @@
 
                     <div class="avatar current-user"></div>
 
-                    <input type="text" placeholder="Escribe un comentario...">
+                    <input type="text" [(ngModel)]="nuevoComentario" maxlength="300"
+                        placeholder="Escribe un comentario...">
 
-                    <button class="publish-btn">
+                    <button class="publish-btn" [disabled]="
+    !nuevoComentario.trim()
+  " (click)="publicarComentario()">
+
                         Publicar
+
                     </button>
 
                 </div>
@@ -121,6 +126,16 @@
                 </div>
 
             </section>
+
+            <div class="acciones">
+
+                <button class="siguiente-btn" (click)="siguiente()">
+
+                    Siguiente →
+
+                </button>
+
+            </div>
 
         </main>
 

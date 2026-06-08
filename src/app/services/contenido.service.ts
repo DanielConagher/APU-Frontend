@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {
+  HttpHeaders
+} from '@angular/common/http';
 
 import { Contenido } from '../models/contenido.model';
 
@@ -22,6 +25,36 @@ export class ContenidoService {
 
     return this.http.get<Contenido>(
       `http://localhost:8080/contenido/${idContenido}`
+    );
+  }
+
+  crearComentario(
+    idContenido: number,
+    comentario: string
+  ) {
+
+    const token =
+      localStorage.getItem(
+        'token'
+      );
+
+    return this.http.post(
+
+      `http://localhost:8080/comentario/${idContenido}`,
+
+      {
+        comentario
+      },
+
+      {
+        headers:
+          new HttpHeaders({
+
+            Authorization:
+              `Bearer ${token}`
+
+          })
+      }
     );
   }
 }
