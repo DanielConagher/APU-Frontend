@@ -61,53 +61,7 @@ header {
     align-items: center;
 }
 
-.user-info {
 
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.user-name {
-
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.user-avatar {
-
-    width: 45px;
-    height: 45px;
-
-    border-radius: 50%;
-
-    object-fit: cover;
-
-    border: 2px solid #ddd;
-}
-
-
-.logo {
-
-    font-size: 40px;
-    font-weight: 900;
-
-    letter-spacing: -2px;
-}
-
-nav {
-    display: flex;
-    gap: 30px;
-}
-
-nav a {
-
-    text-decoration: none;
-
-    color: #111;
-
-    font-size: 14px;
-}
 
 /* CONTENIDO */
 

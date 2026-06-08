@@ -14,31 +14,13 @@
     <!-- CONTENIDO CENTRAL -->
     <main class="main-wrapper">
 
-        <!-- HEADER -->
-        <header>
+        <app-navbar></app-navbar>
 
-            <div class="logo">
-                APU
-            </div>
+        <button class="volver-btn" (click)="volver()">
 
-            <nav>
-                <a href="#">Inicio</a>
-                <a href="#">Aprendizaje</a>
-                <a href="#">Mochila de emergencia</a>
-                <a href="#">Configuración</a>
-            </nav>
+            ← Volver al mapa
 
-            <div class="user-info">
-
-                <span class="user-name">
-                    Abigail
-                </span>
-
-                <img src="https://i.pravatar.cc/100" alt="Avatar" class="user-avatar">
-
-            </div>
-
-        </header>
+        </button>
 
         <!-- CONTENIDO -->
         <main class="container">
@@ -143,21 +125,7 @@
         </main>
 
         <!-- FOOTER -->
-        <footer>
-
-            <div>
-                © 2026 APU - Prevención de Desastres Naturales
-            </div>
-
-            <div class="footer-links">
-
-                <a href="#">Sobre nosotros</a>
-                <a href="#">Contactanos</a>
-                <a href="#">Zonas seguras</a>
-
-            </div>
-
-        </footer>
+        <app-footer></app-footer>
 
     </main>
 

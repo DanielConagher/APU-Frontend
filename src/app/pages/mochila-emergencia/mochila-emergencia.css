@@ -1,0 +1,103 @@
+.mochila-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .08);
+}
+
+@media (max-width: 600px) {
+    .mochila-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .mochila-icono {
+        font-size: 45px;
+    }
+}
+
+.mochila-icono {
+    font-size: 60px;
+}
+
+.mochila-header h1 {
+    color: #1f2937;
+    margin-bottom: 8px;
+}
+
+.mochila-header p {
+    color: #6b7280;
+}
+
+.mochila-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.item {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 20px;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, .05);
+}
+
+.item-icon {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+.estado {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #4caf50;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+}
+
+.recordatorio {
+    margin-top: 25px;
+    background: #e8f5e9;
+    border: 1px solid #a5d6a7;
+    color: #2e7d32;
+    padding: 18px;
+    border-radius: 10px;
+}
+
+/* Tablets */
+@media (max-width: 900px) {
+    .mochila-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Celulares */
+@media (max-width: 600px) {
+    .mochila-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .mochila-container {
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+    .item {
+        padding: 15px;
+    }
+}

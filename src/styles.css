@@ -1,1 +1,101 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f5f7fb;
+}
+
+/* NAVBAR */
+
+.navbar{
+
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    background:#003ecb;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 50px;
+
+    color:white;
+
+    box-shadow:0 3px 15px rgba(0,0,0,.15);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    font-size:38px;
+    font-weight:bold;
+}
+
+.logo i{
+    color:#76ff76;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:50px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+    position:relative;
+}
+
+nav a::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:-8px;
+
+    width:0;
+    height:3px;
+
+    background:#50ff50;
+
+    transition:.3s;
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+.active a::after{
+    width:100%;
+}
+
+.user-section{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.user-section img{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+}
+
+.bell{
+    font-size:22px;
+    cursor:pointer;
+}

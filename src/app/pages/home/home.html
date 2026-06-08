@@ -1,0 +1,164 @@
+<!-- NAVBAR -->
+
+<!-- NAVBAR GLOBAL -->
+    <app-navbar></app-navbar>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>¡Bienvenido a APU!</h1>
+
+        <p>
+            Aprende, prepárate y protege tu vida
+            y la de los demás.
+        </p>
+
+        <button>
+            Explorar contenidos
+            <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+    </div>
+
+</section>
+
+<!-- CONTENIDO -->
+
+<main class="container">
+
+    <h2>Elige qué quieres aprender hoy</h2>
+
+    <section class="cards">
+
+        <div class="card" [ngClass]="
+    obtenerColor(
+      desastre.nombre
+    )
+  " *ngFor="
+    let desastre
+    of desastres
+  ">
+
+            <i [class]="
+                obtenerIcono(
+                    desastre.nombre
+                )
+            ">
+            </i>
+
+            <h3>
+
+                {{
+                desastre.nombre
+                }}
+
+            </h3>
+
+            <div class="progress">
+
+                <div class="progress-fill" [style.width.%]="
+                    desastre.porcentajeAvance
+                ">
+                </div>
+
+            </div>
+
+            <p>
+
+                {{
+                desastre.porcentajeAvance
+                }}%
+
+                completado
+
+            </p>
+
+            <button (click)="
+                abrirMapa(
+                    desastre.idTipoDesastre
+                )
+            ">
+
+                Continuar
+
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- MENSAJE -->
+
+    <section class="alert-box">
+
+        <div>
+            <i class="fa-solid fa-shield-heart"></i>
+            La preparación salva vidas. Infórmate, actúa y comparte.
+        </div>
+
+        <i class="fa-solid fa-heart-pulse"></i>
+
+    </section>
+
+    <!-- ACCESOS -->
+
+    <h2>Accesos rápidos</h2>
+
+    <section class="quick-access">
+
+        <div class="access-card">
+
+            <i class="fa-solid fa-location-dot green-icon"></i>
+
+            <div>
+
+                <h4>Zonas Seguras</h4>
+
+                <p>Encuentra lugares seguros cercanos.</p>
+
+            </div>
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+        </div>
+
+        <div class="access-card">
+
+            <i class="fa-solid fa-phone red-icon"></i>
+
+            <div>
+
+                <h4>Números de Emergencia</h4>
+
+                <p>Teléfonos importantes a la mano.</p>
+
+            </div>
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+        </div>
+
+        <div class="access-card">
+
+            <i class="fa-solid fa-briefcase-medical blue-icon"></i>
+
+            <div>
+
+                <h4>Guías de Primeros Auxilios</h4>
+
+                <p>Aprende a actuar en emergencias.</p>
+
+            </div>
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+        </div>
+
+    </section>
+
+    <app-footer></app-footer>
+
+</main>
