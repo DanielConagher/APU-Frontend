@@ -53,6 +53,10 @@ export const routes: Routes = [
   {
     path: 'configuracion',
     component: ConfiguracionComponent
-  }
+  },
+  {
+  path: 'aprendizaje/:idTipoDesastre',
+  component: AprendizajeComponent
+}
 
 ];
