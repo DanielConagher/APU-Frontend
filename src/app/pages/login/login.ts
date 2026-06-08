@@ -72,6 +72,11 @@ export class LoginComponent {
           response.nombreCompleto
         );
 
+        localStorage.setItem(
+          'idUsuario',
+          response.idUsuario.toString()
+        );
+
         this.router.navigate(
           ['/home']
         );
