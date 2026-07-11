@@ -1,0 +1,150 @@
+<!-- COLUMNA IZQUIERDA -->
+<div class="side left"></div>
+
+<!-- CONTENIDO -->
+<main class="main-wrapper">
+
+    <app-navbar></app-navbar>
+
+    <button class="volver-btn" (click)="volver()">
+
+        ← Volver al mapa
+
+    </button>
+
+    <div class="container" *ngIf="cuestionario">
+
+        <h1>
+            Cuestionario
+        </h1>
+
+        <p class="descripcion">
+
+            Responde todas las preguntas antes de enviar.
+
+        </p>
+
+        <!-- Preguntas -->
+
+        <div class="pregunta-card" *ngFor="
+                let pregunta of cuestionario.preguntas;
+                let i = index
+            ">
+
+            <h2>
+
+                Pregunta {{ i + 1 }}
+
+            </h2>
+
+            <p class="pregunta">
+
+                {{ pregunta.descripcion }}
+
+            </p>
+
+            <div class="respuesta" *ngFor="
+                    let respuesta of pregunta.respuestas
+                ">
+
+                <label>
+
+                    <input type="radio" [name]="'pregunta'+pregunta.idPregunta" [value]="respuesta.idRespuesta"
+                        (change)="
+
+                            seleccionarRespuesta(
+
+                                pregunta.idPregunta,
+
+                                respuesta.idRespuesta
+
+                            )
+
+                        ">
+
+                    {{ respuesta.descripcion }}
+
+                </label>
+
+            </div>
+
+        </div>
+
+        <div class="acciones">
+
+            <div class="mensaje-error" *ngIf="mensajeError">
+
+                {{ mensajeError }}
+
+            </div>
+
+            <button class="resolver-btn" [disabled]="cargando" (click)="resolver()">
+
+                {{ cargando
+                ? 'Calculando...'
+                : 'Resolver cuestionario'
+                }}
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <app-footer></app-footer>
+    <div class="modal-overlay" *ngIf="mostrarResultado">
+
+        <div class="modal">
+
+            <h2>
+
+                {{ resultado?.nota! >= 16
+                ? '¡Cuestionario aprobado!'
+                : 'Cuestionario no aprobado'
+                }}
+
+            </h2>
+
+            <div class="nota">
+
+                Nota obtenida
+
+                <span>
+
+                    {{ resultado?.nota }}
+
+                </span>
+
+            </div>
+
+            <div class="retro">
+
+                {{ resultado?.retroalimentacion }}
+
+            </div>
+
+            <div class="exp">
+
+                Experiencia ganada
+
+                <strong>
+
+                    {{ resultado?.experienciaGanada }}
+
+                </strong>
+
+            </div>
+
+            <button class="cerrar-btn" (click)="volverMapa()">
+
+                Volver al mapa
+
+            </button>
+
+        </div>
+
+    </div>
+</main>
+
+<!-- COLUMNA DERECHA -->
+<div class="side right"></div>

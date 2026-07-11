@@ -56,7 +56,7 @@ export class MapaAprendizajeComponent {
 
           this.burbujas = data;
 
-          // 🔥 AGRUPACIÓN REAL POR NIVEL
+          // AGRUPACIÓN REAL POR NIVEL
           this.niveles = this.agruparPorNivel(data);
         }
       });
@@ -84,15 +84,41 @@ export class MapaAprendizajeComponent {
       .map(x => x[1]);
   }
 
-  abrirContenido(burbuja: MapaAprendizaje): void {
+  abrirContenido(
+    burbuja: MapaAprendizaje
+  ): void {
 
-    if (burbuja.estado === 0) return;
+    if (burbuja.estado === 0)
+      return;
 
-    this.router.navigate([
-      '/contenido',
-      burbuja.idContenido,
-      this.idTipoDesastre
-    ]);
+    if (burbuja.esCuestionario) {
+
+      this.router.navigate([
+
+        '/cuestionario',
+
+        burbuja.idContenido,
+
+        this.idTipoDesastre
+
+      ]);
+
+    }
+
+    else {
+
+      this.router.navigate([
+
+        '/contenido',
+
+        burbuja.idContenido,
+
+        this.idTipoDesastre
+
+      ]);
+
+    }
+
   }
 
   volver(): void {

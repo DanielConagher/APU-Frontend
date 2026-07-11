@@ -60,6 +60,28 @@ export class TheoryContentComponent
       .getContenido(this.idContenido)
       .subscribe(data => {
 
+        if (data.esCuestionario) {
+
+          const idTipoDesastre = Number(
+            this.route.snapshot.paramMap.get(
+              'idTipoDesastre'
+            )
+          );
+
+          this.router.navigate([
+
+            '/cuestionario',
+
+            this.idContenido,
+
+            idTipoDesastre
+
+          ]);
+
+          return;
+
+        }
+
         this.contenido = data;
 
       });
@@ -142,7 +164,7 @@ export class TheoryContentComponent
       idTipoDesastre
     ]);
   }
-  
+
   siguiente(): void {
 
     this.progresoService

@@ -8,4 +8,7 @@ export interface MapaAprendizaje {
 
     numeroNivel: number;
 
+    esCuestionario: boolean;
+
+
 }

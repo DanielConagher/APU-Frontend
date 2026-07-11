@@ -127,7 +127,7 @@
 
             </section>
 
-            <div class="acciones">
+            <div class="acciones" *ngIf="!contenido?.esCuestionario">
 
                 <button class="siguiente-btn" (click)="siguiente()">
 
