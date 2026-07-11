@@ -8,6 +8,7 @@ import { MapaAprendizajeComponent } from './pages/mapa/mapa';
 import { TheoryContentComponent } from './pages/theory-content/theory-content';
 import { MochilaEmergenciaComponent } from './pages/mochila-emergencia/mochila-emergencia';
 import { ConfiguracionComponent } from './pages/configuracion/configuracion';
+import { CuestionarioComponent } from './pages/cuestionario/cuestionario';
 
 export const routes: Routes = [
 
@@ -47,6 +48,13 @@ export const routes: Routes = [
       TheoryContentComponent
   },
   {
+    path:
+      'cuestionario/:idContenido/:idTipoDesastre',
+
+    component:
+      CuestionarioComponent
+  },
+  {
     path: 'mochila',
     component: MochilaEmergenciaComponent
   },
@@ -55,8 +63,9 @@ export const routes: Routes = [
     component: ConfiguracionComponent
   },
   {
-  path: 'aprendizaje/:idTipoDesastre',
-  component: AprendizajeComponent
-}
+    path: 'aprendizaje/:idTipoDesastre',
+    component: AprendizajeComponent
+  }
+
 
 ];
