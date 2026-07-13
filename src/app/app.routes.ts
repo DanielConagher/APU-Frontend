@@ -9,6 +9,7 @@ import { TheoryContentComponent } from './pages/theory-content/theory-content';
 import { MochilaEmergenciaComponent } from './pages/mochila-emergencia/mochila-emergencia';
 import { ConfiguracionComponent } from './pages/configuracion/configuracion';
 import { CuestionarioComponent } from './pages/cuestionario/cuestionario';
+import { AdminContenidosComponent } from './pages/admin-contenidos/admin-contenidos';
 
 export const routes: Routes = [
 
@@ -65,6 +66,11 @@ export const routes: Routes = [
   {
     path: 'aprendizaje/:idTipoDesastre',
     component: AprendizajeComponent
+  },
+  {
+    path: 'admin',
+    component:
+      AdminContenidosComponent
   }
 
 
