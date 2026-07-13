@@ -4,60 +4,97 @@
 
     <div class="mochila-header">
 
+        <div>
+            <h1>Mochila de Emergencia</h1>
+
+            <p>
+                Asegúrate de tener estos elementos esenciales siempre listos.
+            </p>
+
+            <div class="progreso">
+
+                <div class="progreso-texto">
+
+                    Progreso de mochila:
+                    {{porcentaje}}%
+
+                </div>
+
+
+                <div class="barra">
+
+                    <div class="barra-completa" [style.width.%]="porcentaje">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
         <div class="mochila-icono">
             🎒
         </div>
 
-        <div>
-            <h1>Mochila de Emergencia</h1>
-            <p>Asegúrate de tener estos elementos esenciales siempre listos.</p>
-        </div>
+
+    </div>
+
+    <div class="tabs">
+
+        <button [class.activa]="tipoMochila === 'general'" (click)="seleccionarGeneral()">
+
+            Mochila General
+
+        </button>
+
+        <button [class.activa]="tipoMochila === 'personalizada'" (click)="seleccionarPersonalizada()">
+
+            Mochila Personalizada
+
+        </button>
 
     </div>
 
     <div class="mochila-grid">
 
-        <div class="item">
-            <span class="estado">✔️</span>
-            <div class="item-icon">💧</div>
-            <h3>Agua</h3>
-            <p>2 litros por persona</p>
+
+        <div class="item" *ngFor="let material of materialesMostrados" (click)="cambiarEstado(material)">
+
+
+            <span class="estado" [class.incompleto]="!material.conseguido">
+
+                {{material.conseguido ? '✔️' : '❌'}}
+
+            </span>
+
+
+
+            <div class="item-icon">
+                🎒
+            </div>
+
+
+            <h3>
+                {{material.nombre}}
+            </h3>
+
+
+            <p>
+                Cantidad: {{material.cantidad}}
+            </p>
+
+
         </div>
 
-        <div class="item">
-            <span class="estado">✔️</span>
-            <div class="item-icon">🔦</div>
-            <h3>Linterna</h3>
-            <p>Con pilas extra</p>
-        </div>
 
-        <div class="item">
-            <span class="estado">✔️</span>
-            <div class="item-icon">📻</div>
-            <h3>Radio</h3>
-            <p>De pilas o solar</p>
-        </div>
+    </div>
 
-        <div class="item">
-            <span class="estado">✔️</span>
-            <div class="item-icon">🩹</div>
-            <h3>Botiquín</h3>
-            <p>Medicamentos básicos</p>
-        </div>
+    <div class="acciones" *ngIf="tipoMochila === 'general'">
 
-        <div class="item">
-            <span class="estado">✔️</span>
-            <div class="item-icon">🥫</div>
-            <h3>Alimentos</h3>
-            <p>No perecibles</p>
-        </div>
-
-        <div class="item">
-            <span class="estado">✔️</span>
-            <div class="item-icon">📁</div>
-            <h3>Documentos</h3>
-            <p>En bolsa impermeable</p>
-        </div>
+        <button (click)="guardarCambios()">
+            Guardar cambios
+        </button>
 
     </div>
 
@@ -65,8 +102,8 @@
         🛡️ Revisa tu mochila cada 3 meses y mantén todo actualizado.
     </div>
 
-    
+
 
 </section>
 
- <app-footer></app-footer>
+<app-footer></app-footer>
