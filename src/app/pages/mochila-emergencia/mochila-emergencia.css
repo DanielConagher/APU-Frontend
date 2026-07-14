@@ -223,3 +223,153 @@
     opacity: .9;
 
 }
+
+.acciones-superiores {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin: 20px 0;
+
+}
+
+.btn-agregar {
+
+    background: #22c55e;
+
+    color: white;
+
+    border: none;
+
+    padding: 10px 20px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+}
+
+.btn-agregar:hover {
+
+    background: #16a34a;
+
+}
+
+.acciones-item {
+
+    margin-top: 15px;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+}
+
+.acciones-item button {
+
+    border: none;
+
+    background: #f3f4f6;
+
+    padding: 8px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+}
+
+.acciones-item button:hover {
+
+    background: #e5e7eb;
+
+}
+
+.modal-fondo {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, .45);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    z-index: 1000;
+
+}
+
+.modal {
+
+    background: white;
+
+    width: 420px;
+
+    max-width: 90%;
+
+    border-radius: 12px;
+
+    padding: 25px;
+
+}
+
+.modal h2 {
+
+    margin-bottom: 20px;
+
+}
+
+.modal label {
+
+    display: block;
+
+    margin-top: 15px;
+
+    margin-bottom: 5px;
+
+}
+
+.modal input {
+
+    width: 100%;
+
+    padding: 10px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+}
+
+.modal-botones {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 25px;
+
+}
+
+.cancelar {
+
+    background: #e5e7eb;
+
+}
+
+.guardar {
+
+    background: #2563eb;
+
+    color: white;
+
+}

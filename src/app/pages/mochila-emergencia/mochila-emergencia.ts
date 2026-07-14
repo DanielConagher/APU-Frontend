@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { Navbar } from '../../components/navbar/navbar';
 import { FooterComponent } from '../../components/footer/footer';
 
+import { FormsModule } from '@angular/forms';
+
 import {
   MochilaPersonalizadaService,
   MaterialPersonalizado
@@ -21,7 +23,8 @@ import {
   imports: [
     CommonModule,
     Navbar,
-    FooterComponent
+    FooterComponent,
+    FormsModule
   ],
   templateUrl: './mochila-emergencia.html',
   styleUrl: './mochila-emergencia.css'
@@ -37,6 +40,16 @@ export class MochilaEmergenciaComponent implements OnInit {
   materialesPersonalizados: MaterialPersonalizado[] = [];
 
   materialesMostrados: any[] = [];
+
+  mostrarModal = false;
+
+  modoEdicion = false;
+
+  materialEditando: MaterialPersonalizado | null = null;
+
+  nombreMaterial = '';
+
+  cantidadMaterial = 1;
 
 
   idEstudiante!: number;
@@ -149,6 +162,45 @@ export class MochilaEmergenciaComponent implements OnInit {
 
     material.conseguido = !material.conseguido;
 
+    if (this.tipoMochila === 'general') {
+
+      return;
+
+    }
+
+    this.mochilaPersonalizadaService
+      .actualizarMaterial(
+
+        material.idMaterialPersonalizado,
+
+        {
+
+          nombre: material.nombre,
+
+          cantidad: material.cantidad,
+
+          conseguido: material.conseguido
+
+        }
+
+      )
+      .subscribe({
+
+        next: (data) => {
+
+          this.materialesPersonalizados =
+            data.materiales;
+
+          this.materialesMostrados =
+            this.materialesPersonalizados;
+
+          this.porcentaje =
+            Number(data.porcentajeCompletado);
+
+        }
+
+      });
+
   }
 
 
@@ -225,6 +277,187 @@ export class MochilaEmergenciaComponent implements OnInit {
     this.tipoMochila = 'personalizada';
 
     this.cargarMochilaPersonalizada();
+
+  }
+
+  agregarMaterial() {
+
+    this.modoEdicion = false;
+
+    this.materialEditando = null;
+
+    this.nombreMaterial = '';
+
+    this.cantidadMaterial = 1;
+
+    this.mostrarModal = true;
+
+  }
+
+  editarMaterial(material: MaterialPersonalizado) {
+
+    this.modoEdicion = true;
+
+    this.materialEditando = material;
+
+    this.nombreMaterial = material.nombre;
+
+    this.cantidadMaterial = material.cantidad;
+
+    this.mostrarModal = true;
+
+  }
+
+  eliminarMaterial(material: MaterialPersonalizado) {
+
+    if (!confirm("¿Eliminar este material?")) {
+
+      return;
+
+    }
+
+    this.mochilaPersonalizadaService
+      .eliminarMaterial(
+
+        material.idMaterialPersonalizado
+
+      )
+      .subscribe({
+
+        next: (data) => {
+
+          this.materialesPersonalizados =
+            data.materiales;
+
+          this.materialesMostrados =
+            this.materialesPersonalizados;
+
+          this.porcentaje =
+            Number(data.porcentajeCompletado);
+
+        },
+
+        error: (err) => {
+
+          console.error(err);
+
+        }
+
+      });
+
+  }
+
+  cerrarModal() {
+
+    this.mostrarModal = false;
+
+  }
+
+  guardarMaterial() {
+
+    if (!this.nombreMaterial.trim()) {
+
+      alert("Ingrese un nombre");
+
+      return;
+
+    }
+
+    if (this.cantidadMaterial <= 0) {
+
+      alert("La cantidad debe ser mayor que 0");
+
+      return;
+
+    }
+
+    if (!this.modoEdicion) {
+
+      this.mochilaPersonalizadaService
+        .agregarMaterial(
+
+          this.idEstudiante,
+
+          {
+
+            nombre: this.nombreMaterial,
+
+            cantidad: this.cantidadMaterial
+
+          }
+
+        )
+        .subscribe({
+
+          next: (data) => {
+
+            this.materialesPersonalizados =
+              data.materiales;
+
+            this.materialesMostrados =
+              this.materialesPersonalizados;
+
+            this.porcentaje =
+              Number(data.porcentajeCompletado);
+
+            this.cerrarModal();
+
+          },
+
+          error: (err) => {
+
+            console.error(err);
+
+          }
+
+        });
+
+    }
+
+    else {
+
+      this.mochilaPersonalizadaService
+        .actualizarMaterial(
+
+          this.materialEditando!.idMaterialPersonalizado,
+
+          {
+
+            nombre: this.nombreMaterial,
+
+            cantidad: this.cantidadMaterial,
+
+            conseguido: this.materialEditando!.conseguido
+
+          }
+
+        )
+        .subscribe({
+
+          next: (data) => {
+
+            this.materialesPersonalizados =
+              data.materiales;
+
+            this.materialesMostrados =
+              this.materialesPersonalizados;
+
+            this.porcentaje =
+              Number(data.porcentajeCompletado);
+
+            this.cerrarModal();
+
+          },
+
+          error: (err) => {
+
+            console.error(err);
+
+          }
+
+        });
+
+    }
 
   }
 

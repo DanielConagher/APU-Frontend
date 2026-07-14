@@ -56,6 +56,16 @@
 
     </div>
 
+    <div class="acciones-superiores" *ngIf="tipoMochila==='personalizada'">
+
+        <button class="btn-agregar" (click)="agregarMaterial()">
+
+            + Agregar material
+
+        </button>
+
+    </div>
+
     <div class="mochila-grid">
 
 
@@ -84,6 +94,22 @@
                 Cantidad: {{material.cantidad}}
             </p>
 
+            <div class="acciones-item" *ngIf="tipoMochila==='personalizada'">
+
+                <button (click)="editarMaterial(material); $event.stopPropagation()">
+
+                    ✏️
+
+                </button>
+
+                <button (click)="eliminarMaterial(material); $event.stopPropagation()">
+
+                    🗑️
+
+                </button>
+
+            </div>
+
 
         </div>
 
@@ -102,7 +128,51 @@
         🛡️ Revisa tu mochila cada 3 meses y mantén todo actualizado.
     </div>
 
+    <div class="modal-fondo" *ngIf="mostrarModal">
 
+        <div class="modal">
+
+            <h2>
+
+                {{modoEdicion ? 'Editar material' : 'Agregar material'}}
+
+            </h2>
+
+            <label>
+
+                Nombre
+
+            </label>
+
+            <input type="text" [(ngModel)]="nombreMaterial">
+
+            <label>
+
+                Cantidad
+
+            </label>
+
+            <input type="number" min="1" [(ngModel)]="cantidadMaterial">
+
+            <div class="modal-botones">
+
+                <button class="cancelar" (click)="cerrarModal()">
+
+                    Cancelar
+
+                </button>
+
+                <button class="guardar" (click)="guardarMaterial()">
+
+                    Guardar
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 

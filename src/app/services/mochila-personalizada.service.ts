@@ -43,4 +43,46 @@ export class MochilaPersonalizadaService {
 
   }
 
+  agregarMaterial(
+    idEstudiante: number,
+    request: any) {
+
+    return this.http.post<MochilaPersonalizada>(
+
+      `${this.api}/` +
+      `${idEstudiante}/material`,
+
+      request
+
+    );
+
+  }
+
+  actualizarMaterial(
+    idMaterial: number,
+    request: any) {
+
+    return this.http.put<MochilaPersonalizada>(
+
+      `${this.api}/material/` +
+      idMaterial,
+
+      request
+
+    );
+
+  }
+
+  eliminarMaterial(
+    idMaterial: number) {
+
+    return this.http.delete<MochilaPersonalizada>(
+
+      `${this.api}/material/` +
+      idMaterial
+
+    );
+
+  }
+
 }
