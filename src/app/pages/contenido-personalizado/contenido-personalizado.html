@@ -1,0 +1,231 @@
+<div class="side left"></div>
+
+
+<main class="main-wrapper">
+
+    <app-navbar></app-navbar>
+
+
+    <button class="volver-btn" (click)="volver()">
+
+        ← Volver al mapa
+
+    </button>
+
+
+
+    <main class="container"
+          [class.alto-contraste]="altoContraste">
+
+
+        <div class="date">
+            Mayo 2026
+        </div>
+
+
+        <h1>
+            Contenido personalizado
+        </h1>
+
+
+        <div class="author">
+
+            Aprendizaje adaptado al estudiante
+
+        </div>
+
+
+
+        <!-- ACCESIBILIDAD -->
+
+        <div class="accessibility-toolbar"
+             *ngIf="contenido?.teoria">
+
+
+            <button class="voice-btn"
+                    *ngIf="!leyendo"
+                    (click)="leerTeoria()">
+
+                🔊 Escuchar
+
+            </button>
+
+
+
+            <button class="voice-btn"
+                    *ngIf="leyendo && !pausado"
+                    (click)="pausarLectura()">
+
+                ⏸ Pausar
+
+            </button>
+
+
+
+            <button class="voice-btn"
+                    *ngIf="leyendo && pausado"
+                    (click)="reanudarLectura()">
+
+                ▶ Continuar
+
+            </button>
+
+
+
+            <button class="voice-btn stop"
+                    *ngIf="leyendo"
+                    (click)="detenerLectura()">
+
+                ⏹ Detener
+
+            </button>
+
+
+
+            <button class="contrast-btn"
+                    (click)="toggleAltoContraste()">
+
+                {{
+                altoContraste
+                ? '☀️ Modo normal'
+                : '🌙 Alto contraste'
+                }}
+
+            </button>
+
+
+
+            <button class="font-btn"
+                    (click)="disminuirFuente()">
+
+                A−
+
+            </button>
+
+
+            <button class="font-btn"
+                    (click)="restablecerFuente()">
+
+                A
+
+            </button>
+
+
+            <button class="font-btn"
+                    (click)="aumentarFuente()">
+
+                A+
+
+            </button>
+
+
+        </div>
+
+
+
+
+        <!-- IMAGEN -->
+
+
+        <div class="main-image"
+             *ngIf="contenido?.imagenes?.length">
+
+
+            <img
+            [src]="
+            'http://localhost:8080'
+            +
+            contenido!.imagenes[0]
+            "
+            alt="Imagen contenido">
+
+
+        </div>
+
+
+
+
+
+        <!-- TEXTO -->
+
+
+        <section class="content">
+
+
+            <h2>
+
+                Aprende sobre prevención
+
+            </h2>
+
+
+
+            <p
+            [style.font-size.px]="tamanoFuente">
+
+                {{contenido?.teoria}}
+
+            </p>
+
+
+        </section>
+
+
+
+
+
+
+        <!-- VIDEO -->
+
+
+        <section class="video-section"
+                 *ngIf="contenido?.videos?.length">
+
+
+            <iframe
+            [src]="contenido!.videos[0] | safe"
+            title="Video"
+            frameborder="0"
+            allowfullscreen>
+
+            </iframe>
+
+
+        </section>
+
+
+
+
+
+        <!-- SIGUIENTE -->
+
+
+        <div class="acciones">
+
+
+            <button
+            class="siguiente-btn"
+            (click)="siguiente()">
+
+
+                Siguiente →
+
+            </button>
+
+
+        </div>
+
+
+
+    </main>
+
+
+
+    <app-footer></app-footer>
+
+
+</main>
+
+
+
+<div class="side right"></div>

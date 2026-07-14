@@ -1,8 +1,6 @@
-export interface MapaAprendizaje {
+export interface MapaPersonalizado {
 
     numeroNivel: number;
-
-    posicion: number;
 
     idContenido: number;
 
@@ -11,5 +9,7 @@ export interface MapaAprendizaje {
     titulo: string;
 
     esCuestionario: boolean;
+
+    posicion: number;
 
 }
