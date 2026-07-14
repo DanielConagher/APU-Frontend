@@ -19,12 +19,27 @@
         <span>{{ nombreDesastre }}</span>
     </div>
 
+    <div class="selector-mapa">
+
+        <button [class.activo]="tipoMapa==='general'" (click)="cambiarMapa('general')">
+
+            🌎 Mapa general
+
+        </button>
+
+
+        <button [class.activo]="tipoMapa==='personalizado'" (click)="cambiarMapa('personalizado')">
+
+            ♿ Mapa personalizado
+
+        </button>
+
+    </div>
+
     <!-- MAPA -->
     <div class="camino">
 
-        <div *ngFor="let nivel of niveles; let i = index"
-             class="nivel"
-             [ngClass]="{
+        <div *ngFor="let nivel of niveles; let i = index" class="nivel" [ngClass]="{
                 'nivel-azul': i % 2 === 0,
                 'nivel-amarillo': i % 2 !== 0
              }">
@@ -35,14 +50,11 @@
 
             <div class="nivel-contenido">
 
-                <div *ngFor="let burbuja of nivel"
-                     class="burbuja"
-                     [ngClass]="{
+                <div *ngFor="let burbuja of nivel" class="burbuja" [ngClass]="{
                         bloqueado: burbuja.estado === 0,
                         completado: burbuja.estado === 1,
                         proceso: burbuja.estado === 2
-                     }"
-                     (click)="abrirContenido(burbuja)">
+                     }" (click)="abrirContenido(burbuja)">
 
                     {{ burbuja.titulo }}
 
@@ -55,6 +67,5 @@
     </div>
 
 </div>
- <app-footer></app-footer>
+<app-footer></app-footer>
 <div class="side right"></div>
-

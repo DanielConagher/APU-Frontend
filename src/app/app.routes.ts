@@ -11,6 +11,8 @@ import { ConfiguracionComponent } from './pages/configuracion/configuracion';
 import { CuestionarioComponent } from './pages/cuestionario/cuestionario';
 import { AdminContenidosComponent } from './pages/admin-contenidos/admin-contenidos';
 import { ZonaSeguraComponent } from './pages/zona-segura/zona-segura';
+import { ContenidoPersonalizadoComponent }
+  from './pages/contenido-personalizado/contenido-personalizado';
 
 export const routes: Routes = [
 
@@ -76,6 +78,14 @@ export const routes: Routes = [
   {
     path: 'zonas-seguras',
     component: ZonaSeguraComponent
+  },
+
+  {
+    path:
+      'contenido-personalizado/:idContenido/:idTipoDesastre',
+
+    component:
+      ContenidoPersonalizadoComponent
   },
 
 
