@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Ubicacion } from '../../services/ubicacion.service';
 import {
   ZonaSeguraService,
@@ -22,7 +22,7 @@ import { FooterComponent } from '../../components/footer/footer';
   templateUrl: './zona-segura.html',
   styleUrl: './zona-segura.css',
 })
-export class ZonaSeguraComponent {
+export class ZonaSeguraComponent implements OnInit {
   zonas: ZonaSegura[] = [];
 
   zonasFiltradas: ZonaSegura[] = [];
