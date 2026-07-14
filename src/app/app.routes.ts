@@ -10,6 +10,7 @@ import { MochilaEmergenciaComponent } from './pages/mochila-emergencia/mochila-e
 import { ConfiguracionComponent } from './pages/configuracion/configuracion';
 import { CuestionarioComponent } from './pages/cuestionario/cuestionario';
 import { AdminContenidosComponent } from './pages/admin-contenidos/admin-contenidos';
+import { ZonaSeguraComponent } from './pages/zona-segura/zona-segura';
 
 export const routes: Routes = [
 
@@ -71,7 +72,11 @@ export const routes: Routes = [
     path: 'admin',
     component:
       AdminContenidosComponent
-  }
+  },
+  {
+    path: 'zonas-seguras',
+    component: ZonaSeguraComponent
+  },
 
 
 ];

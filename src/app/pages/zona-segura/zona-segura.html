@@ -1,0 +1,103 @@
+<app-navbar></app-navbar>
+
+<section class="zona-container">
+
+    <div class="zona-header">
+
+        <div>
+
+            <h1>Zonas Seguras</h1>
+
+            <p>
+                Consulta las zonas seguras registradas y encuentra rápidamente un lugar de evacuación cercano.
+            </p>
+
+        </div>
+
+        <div class="zona-icono">
+            📍
+        </div>
+
+    </div>
+
+    <div class="filtros">
+
+        <input
+            type="text"
+            placeholder="Buscar por nombre..."
+            [(ngModel)]="nombreBuscar"
+            (input)="filtrar()">
+
+        <select
+            [(ngModel)]="ubicacionSeleccionada"
+            (change)="filtrar()">
+
+            <option [ngValue]="0">
+                Todas las ubicaciones
+            </option>
+
+            <option
+                *ngFor="let ubicacion of ubicaciones"
+                [ngValue]="ubicacion.idUbicacion">
+
+                {{ ubicacion.nombre }}
+
+            </option>
+
+        </select>
+
+    </div>
+
+    <div
+        class="sin-resultados"
+        *ngIf="zonasFiltradas.length === 0">
+
+        No se encontraron zonas seguras.
+
+    </div>
+
+    <div
+        class="zonas-grid"
+        *ngIf="zonasFiltradas.length > 0">
+
+        <div
+            class="zona-card"
+            *ngFor="let zona of zonasFiltradas">
+
+            <div class="zona-icono-card">
+                📍
+            </div>
+
+            <h3>
+
+                {{ zona.nombre }}
+
+            </h3>
+
+            <p class="descripcion">
+
+                {{ zona.descripcion }}
+
+            </p>
+
+            <div class="ubicacion">
+
+                <strong>Ubicación:</strong>
+
+                {{ zona.ubicacion }}
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="recordatorio">
+
+        🛡️ Identifica previamente la zona segura más cercana antes de una emergencia.
+
+    </div>
+
+</section>
+
+<app-footer></app-footer>
