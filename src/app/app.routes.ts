@@ -14,6 +14,21 @@ import { ZonaSeguraComponent } from './pages/zona-segura/zona-segura';
 import { ContenidoPersonalizadoComponent }
   from './pages/contenido-personalizado/contenido-personalizado';
 
+import { AdminUsuarios }
+  from './pages/admin-usuarios/admin-usuarios';
+
+import { AdminEstadisticas }
+  from './pages/admin-estadisticas/admin-estadisticas';
+
+import { AdminPerfil }
+  from './pages/admin-perfil/admin-perfil';
+
+import { AdminLayout }
+  from './pages/admin-layout/admin-layout';
+
+import { AdminDashboard }
+  from './pages/admin-dashboard/admin-dashboard';
+
 export const routes: Routes = [
 
   {
@@ -72,8 +87,43 @@ export const routes: Routes = [
   },
   {
     path: 'admin',
-    component:
-      AdminContenidosComponent
+
+    component: AdminLayout,
+
+    children: [
+
+      {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full'
+      },
+
+
+      {
+        path: 'dashboard',
+        component: AdminDashboard
+      },
+      {
+        path: 'resumen-ia',
+        component: AdminContenidosComponent
+      },
+      {
+        path: 'usuarios',
+        component: AdminUsuarios
+      },
+      {
+        path: 'estadisticas',
+        component: AdminEstadisticas
+      },
+
+
+      {
+        path: 'perfil',
+        component: AdminPerfil
+      },
+
+    ]
+
   },
   {
     path: 'zonas-seguras',

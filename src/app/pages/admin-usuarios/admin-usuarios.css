@@ -1,0 +1,129 @@
+/*==========================
+      TABLA USUARIOS
+==========================*/
+
+.tabla-card{
+
+    margin:35px;
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:12px;
+
+    box-shadow:0 6px 18px rgba(0,0,0,.08);
+
+}
+
+.acciones{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    margin-bottom:25px;
+
+    flex-wrap:wrap;
+
+}
+
+.acciones input{
+
+    flex:1;
+
+    padding:12px;
+
+    border:1px solid #ccc;
+
+    border-radius:8px;
+
+}
+
+.btn-agregar{
+
+    background:#16A34A;
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+thead{
+
+    background:#1E3A8A;
+
+    color:white;
+
+}
+
+th{
+
+    padding:15px;
+
+}
+
+td{
+
+    padding:15px;
+
+    text-align:center;
+
+    border-bottom:1px solid #eee;
+
+}
+
+tbody tr:hover{
+
+    background:#f8fafc;
+
+}
+
+.estado{
+
+    padding:6px 15px;
+
+    border-radius:20px;
+
+    color:white;
+
+}
+
+.activo2{
+
+    background:#16A34A;
+
+}
+
+.editar{
+
+    background:#F59E0B;
+
+}
+
+.desactivar{
+
+    background:#DC2626;
+
+}
+
+.paginacion{
+
+    margin-top:25px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    align-items:center;
+
+}

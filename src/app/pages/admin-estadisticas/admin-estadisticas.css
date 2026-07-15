@@ -1,0 +1,57 @@
+/*============================
+
+POWER BI
+
+=============================*/
+
+.powerbi {
+
+    margin: 35px;
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
+
+}
+
+.powerbi h2 {
+
+    color: #1E3A8A;
+
+    margin-bottom: 15px;
+
+}
+
+.powerbi p {
+
+    margin-bottom: 20px;
+
+    color: #666;
+
+}
+
+.contenedor-dashboard {
+
+    height: 600px;
+
+    border: 3px dashed #2563EB;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 26px;
+
+    color: #2563EB;
+
+    background: #f8fbff;
+
+}
