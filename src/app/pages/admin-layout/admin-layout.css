@@ -1,0 +1,372 @@
+/* ==========================
+        CONFIGURACIÓN
+========================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f4f7fb;
+}
+
+/* ==========================
+        DASHBOARD
+========================== */
+
+.dashboard {
+
+    display: flex;
+
+    min-height: 100vh;
+
+    width: 100%;
+
+    overflow-x: hidden;
+
+}
+
+/* ==========================
+        MENÚ LATERAL
+========================== */
+
+.sidebar {
+
+    width: 260px;
+
+    min-width: 260px;
+
+    background: #1E3A8A;
+
+    color: white;
+
+    display: flex;
+
+    flex-direction: column;
+
+    overflow: hidden;
+
+}
+
+.sidebar nav {
+
+    width: 100%;
+
+}
+
+.logo {
+
+    padding: 25px 15px;
+
+    text-align: center;
+
+    overflow: hidden;
+
+}
+
+.logo h2 {
+
+    font-size: 30px;
+
+    white-space: nowrap;
+
+}
+
+.logo p {
+
+    margin-top: 8px;
+
+    color: #dbeafe;
+
+    font-size: 16px;
+
+    white-space: nowrap;
+
+}
+
+.sidebar ul {
+
+    list-style: none;
+
+    padding: 0;
+
+    margin: 20px 0 0 0;
+
+    width: 100%;
+
+}
+
+
+.sidebar li {
+
+    width: 100%;
+
+    padding: 18px 25px;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+    font-size: 17px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+
+}
+
+.sidebar li:hover {
+
+    background: #2563EB;
+
+}
+
+.activo {
+
+    background: #2563EB;
+
+}
+
+/* ==========================
+        CONTENIDO
+========================== */
+
+.contenido {
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+/* ==========================
+        BARRA SUPERIOR
+========================== */
+
+.topbar {
+
+    background: white;
+
+    height: 75px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 0 40px;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .08);
+
+}
+
+.usuario {
+
+    background: #2563EB;
+
+    color: white;
+
+    padding: 10px 20px;
+
+    border-radius: 30px;
+
+}
+
+/* ==========================
+        BIENVENIDA
+========================== */
+
+.bienvenida {
+
+    margin: 35px;
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 6px 15px rgba(0, 0, 0, .08);
+
+}
+
+.bienvenida h2 {
+
+    color: #1E3A8A;
+
+    margin-bottom: 10px;
+
+}
+
+/* ==========================
+        TARJETAS
+========================== */
+
+.cards {
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+    gap: 25px;
+
+    padding: 0 35px 35px;
+
+}
+
+.card {
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
+
+    transition: .3s;
+
+    cursor: pointer;
+
+}
+
+.card:hover {
+
+    transform: translateY(-8px);
+
+}
+
+.card h3 {
+
+    color: #1E3A8A;
+
+    margin-bottom: 15px;
+
+}
+
+.card p {
+
+    color: #555;
+
+    line-height: 24px;
+
+}
+
+/* ==========================
+        RESPONSIVE
+========================== */
+
+@media(max-width:900px) {
+
+    .sidebar {
+
+        width: 220px;
+        min-width: 220px;
+
+    }
+
+    .logo {
+
+        padding: 20px 10px;
+
+    }
+
+    .logo h2 {
+
+        font-size: 24px;
+
+    }
+
+    .logo p {
+
+        display: block;
+
+        font-size: 14px;
+
+    }
+
+    .sidebar li {
+
+        padding: 15px;
+
+        font-size: 15px;
+
+        white-space: nowrap;
+
+    }
+
+    .topbar {
+
+        padding: 20px;
+
+    }
+
+}
+
+.sidebar ul {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+}
+
+
+.sidebar li {
+
+    display: flex;
+
+    flex-direction: row;
+
+}
+
+@media(max-width:600px) {
+
+
+    .sidebar {
+
+        width: 60px;
+
+        min-width: 60px;
+
+    }
+
+
+    .sidebar li {
+
+        padding: 15px 0;
+
+    }
+
+
+    .topbar h1 {
+
+        font-size: 16px;
+
+    }
+
+
+    .usuario {
+
+        font-size: 12px;
+
+    }
+
+
+}

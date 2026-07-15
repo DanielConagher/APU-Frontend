@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AnalisisComentariosService } from '../../services/analisis-comentarios.service';
 import { FormsModule } from '@angular/forms';
+import { ContenidoAdmin } from '../../models/contenido-admin.model';
+import { ContenidoService } from '../../services/contenido.service';
 
 @Component({
 
@@ -22,75 +24,91 @@ import { FormsModule } from '@angular/forms';
   ]
 
 })
-export class AdminContenidosComponent {
+export class AdminContenidosComponent implements OnInit {
 
 
-  idContenido: number = 1;
+  contenidos: ContenidoAdmin[] = [];
 
+  contenidoSeleccionado?: ContenidoAdmin;
 
-  resumen: string = '';
+  resumen = '';
 
   mostrarModal = false;
-
 
   cargando = false;
 
 
   constructor(
-    private analisisService:
-      AnalisisComentariosService
+
+    private contenidoService: ContenidoService,
+
+    private analisisService: AnalisisComentariosService
+
   ) { }
 
+  ngOnInit() {
 
+    this.contenidoService
+
+      .listarContenidos()
+
+      .subscribe({
+
+        next: (data) => {
+
+          this.contenidos = data;
+
+        }
+
+      });
+
+  }
 
   generarResumen() {
 
+    if (!this.contenidoSeleccionado) {
+      alert("Seleccione primero un contenido");
+      return;
+
+    }
 
     this.cargando = true;
-
 
     this.analisisService
 
       .generarResumen(
-        this.idContenido
+
+        this.contenidoSeleccionado.idContenido
+
       )
 
       .subscribe({
 
         next: (respuesta) => {
 
-
-          this.resumen =
-            respuesta;
-
+          this.resumen = respuesta;
 
           this.mostrarModal = true;
-
 
           this.cargando = false;
 
         },
 
-
         error: (error) => {
 
-
-          console.error(error);
-
-
           alert(
-            error.error
-            ||
-            'Error generando resumen'
-          );
 
+            error.error ||
+
+            "Error"
+
+          );
 
           this.cargando = false;
 
         }
 
       });
-
 
   }
 
@@ -102,4 +120,9 @@ export class AdminContenidosComponent {
 
   }
 
+  seleccionarContenido(contenido: ContenidoAdmin) {
+
+    this.contenidoSeleccionado = contenido;
+
+  }
 }

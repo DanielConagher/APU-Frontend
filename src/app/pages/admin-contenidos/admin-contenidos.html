@@ -1,30 +1,93 @@
-<h1>
-    Panel administrador
-</h1>
+<section class="admin-resumen">
 
 
-<div>
-
-    <label>
-        ID Contenido:
-    </label>
+    <h1>
+        Resumen Inteligente de Comentarios
+    </h1>
 
 
-    <input type="number" [(ngModel)]="idContenido">
+
+    <div class="contenedor">
 
 
-    <button (click)="generarResumen()" [disabled]="cargando">
+        <div class="lista">
 
 
-        {{cargando
-        ? 'Generando...'
-        : 'Generar resumen'}}
+            <h2>
+                Contenidos
+            </h2>
 
 
-    </button>
+
+            <div 
+            class="contenido"
+            *ngFor="let contenido of contenidos"
+            (click)="seleccionarContenido(contenido)"
+            [class.activo]="contenidoSeleccionado?.idContenido===contenido.idContenido">
 
 
-</div>
+                <h3>
+                    Nivel {{contenido.nivel}}
+                </h3>
+
+
+                <p>
+                    {{contenido.titulo}}
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+        <div class="panel">
+
+
+            <h2>
+
+                {{
+                contenidoSeleccionado?.titulo 
+                || 
+                'Seleccione un contenido'
+                }}
+
+            </h2>
+
+
+
+            <button 
+            (click)="generarResumen()"
+            [disabled]="!contenidoSeleccionado || cargando">
+
+
+                {{
+                cargando 
+                ? 
+                'Generando...'
+                :
+                'Generar resumen IA'
+                }}
+
+
+            </button>
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+</section>
+
+
 
 
 
@@ -35,17 +98,21 @@
 
 
         <h2>
-            Resumen del contenido
+            Resumen IA
         </h2>
 
 
-        <p>
-            {{resumen}}
-        </p>
+        <pre>
+{{resumen}}
+        </pre>
 
 
-        <button (click)="cerrarModal()">
+
+        <button 
+        (click)="cerrarModal()">
+
             Cerrar
+
         </button>
 
 
