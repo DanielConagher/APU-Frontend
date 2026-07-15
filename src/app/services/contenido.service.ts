@@ -6,6 +6,7 @@ import {
 } from '@angular/common/http';
 
 import { Contenido } from '../models/contenido.model';
+import { ContenidoAdmin } from '../models/contenido-admin.model';
 
 @Injectable({
   providedIn: 'root'
@@ -56,5 +57,15 @@ export class ContenidoService {
           })
       }
     );
+  }
+
+  listarContenidos() {
+
+    return this.http.get<ContenidoAdmin[]>(
+
+      'http://localhost:8080/contenido/admin'
+
+    );
+
   }
 }
