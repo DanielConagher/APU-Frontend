@@ -1,0 +1,98 @@
+<div class="dashboard">
+
+
+    <aside class="sidebar">
+
+
+        <div class="logo">
+
+            <h2>APU</h2>
+
+            <p>Administrador</p>
+
+        </div>
+
+
+        <nav>
+
+            <ul>
+
+                <li routerLink="/admin/dashboard" routerLinkActive="activo">
+
+                    🏠 Inicio
+
+                </li>
+
+
+                <li routerLink="/admin/usuarios" routerLinkActive="activo">
+
+                    👥 Usuarios
+
+                </li>
+
+
+                <li routerLink="/admin/estadisticas" routerLinkActive="activo">
+
+                    📊 Estadísticas
+
+                </li>
+
+
+                <li routerLink="/admin/resumen-ia" routerLinkActive="activo">
+
+                    🤖 Resumen IA
+
+                </li>
+
+
+                <li routerLink="/admin/perfil" routerLinkActive="activo">
+
+                    ⚙ Perfil
+
+                </li>
+
+
+                <li (click)="cerrarSesion()">
+
+                    🚪 Cerrar sesión
+
+                </li>
+
+            </ul>
+
+        </nav>
+
+
+    </aside>
+
+
+
+    <main class="contenido">
+
+
+        <header class="topbar">
+
+
+            <h1>
+                Panel Administrativo
+            </h1>
+
+
+            <div class="usuario">
+
+                👤 Administrador
+
+            </div>
+
+
+        </header>
+
+
+
+        <router-outlet></router-outlet>
+
+
+    </main>
+
+
+</div>

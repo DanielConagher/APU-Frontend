@@ -1,0 +1,267 @@
+/* ==========================
+        CONFIGURACIÓN
+========================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f4f7fb;
+}
+
+/* ==========================
+        DASHBOARD
+========================== */
+
+.dashboard {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ==========================
+        MENÚ LATERAL
+========================== */
+
+.sidebar {
+
+    width: 260px;
+
+    background: #1E3A8A;
+
+    color: white;
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+.logo {
+
+    padding: 30px;
+
+    text-align: center;
+
+    border-bottom: 1px solid rgba(255, 255, 255, .2);
+
+}
+
+.logo h2 {
+
+    font-size: 30px;
+
+}
+
+.logo p {
+
+    margin-top: 8px;
+
+    color: #dbeafe;
+
+}
+
+.sidebar ul {
+
+    list-style: none;
+
+    margin-top: 20px;
+
+}
+
+.sidebar li {
+
+    padding: 18px 25px;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+    font-size: 17px;
+
+}
+
+.sidebar li:hover {
+
+    background: #2563EB;
+
+}
+
+.activo {
+
+    background: #2563EB;
+
+}
+
+/* ==========================
+        CONTENIDO
+========================== */
+
+.contenido {
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+/* ==========================
+        BARRA SUPERIOR
+========================== */
+
+.topbar {
+
+    background: white;
+
+    height: 75px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 0 40px;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .08);
+
+}
+
+.usuario {
+
+    background: #2563EB;
+
+    color: white;
+
+    padding: 10px 20px;
+
+    border-radius: 30px;
+
+}
+
+/* ==========================
+        BIENVENIDA
+========================== */
+
+.bienvenida {
+
+    margin: 35px;
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 6px 15px rgba(0, 0, 0, .08);
+
+}
+
+.bienvenida h2 {
+
+    color: #1E3A8A;
+
+    margin-bottom: 10px;
+
+}
+
+/* ==========================
+        TARJETAS
+========================== */
+
+.cards {
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+    gap: 25px;
+
+    padding: 0 35px 35px;
+
+}
+
+.card {
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
+
+    transition: .3s;
+
+    cursor: pointer;
+
+}
+
+.card:hover {
+
+    transform: translateY(-8px);
+
+}
+
+.card h3 {
+
+    color: #1E3A8A;
+
+    margin-bottom: 15px;
+
+}
+
+.card p {
+
+    color: #555;
+
+    line-height: 24px;
+
+}
+
+/* ==========================
+        RESPONSIVE
+========================== */
+
+@media(max-width:900px) {
+
+    .sidebar {
+
+        width: 80px;
+
+    }
+
+    .logo h2 {
+
+        font-size: 20px;
+
+    }
+
+    .logo p {
+
+        display: none;
+
+    }
+
+    .sidebar li {
+
+        text-align: center;
+
+        padding: 18px 5px;
+
+        font-size: 14px;
+
+    }
+
+    .topbar {
+
+        padding: 20px;
+
+    }
+
+}
