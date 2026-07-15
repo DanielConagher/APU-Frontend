@@ -47,8 +47,7 @@
       <label>Ubicación</label>
       <select [(ngModel)]="idUbicacion">
 
-        <option *ngFor="let u of ubicaciones"
-                [value]="u.idUbicacion">
+        <option *ngFor="let u of ubicaciones" [value]="u.idUbicacion">
 
           {{ u.nombre }}
 
@@ -58,6 +57,30 @@
 
       <div class="error" *ngIf="errores?.idUbicacion">
         {{ errores.idUbicacion }}
+      </div>
+
+      <label>Discapacidades</label>
+
+      <div class="lista-discapacidades">
+
+        <label class="discapacidad-item" *ngFor="let d of discapacidades">
+          <!--checked hace que el input se tache cuando la discapacidad con d.idDiscapacidad se encuentre
+          dentro del arreglo idsDiscapacidad. Si no esta en el arreglo, se destacha. Estamos 
+          indicandole al input cuando tacharse y cuando destacharse. 
+          Asimismo, change hace que cuando clickemos el checkbox se ejecute el metodo toogleDiscapacidad
+          al cual le enviaremos de parametro el d.idDiscapacidad-->
+          <input type="checkbox" [checked]="idsDiscapacidades.includes(d.idDiscapacidad)"
+            (change)="toggleDiscapacidad(d.idDiscapacidad)">
+          {{ d.nombre }}
+
+        </label>
+
+      </div>
+
+      <div class="error" *ngIf="errores?.idsDiscapacidades">
+
+        {{ errores.idsDiscapacidades }}
+
       </div>
 
       <!-- BOTÓN -->
@@ -76,4 +99,4 @@
 
 </section>
 
- <app-footer></app-footer>
+<app-footer></app-footer>

@@ -6,49 +6,42 @@
             Registro
         </h1>
 
-        <form
-            (ngSubmit)="registrar()">
+        <form (ngSubmit)="registrar()">
 
-            <input
-                [(ngModel)]="primerNombre"
-                name="primerNombre"
-                placeholder="Primer nombre">
+            <input [(ngModel)]="primerNombre" name="primerNombre" placeholder="Primer nombre">
 
-            <input
-                [(ngModel)]="segundoNombre"
-                name="segundoNombre"
-                placeholder="Segundo nombre">
+            <input [(ngModel)]="segundoNombre" name="segundoNombre" placeholder="Segundo nombre">
 
-            <input
-                [(ngModel)]="primerApellido"
-                name="primerApellido"
-                placeholder="Primer apellido">
+            <input [(ngModel)]="primerApellido" name="primerApellido" placeholder="Primer apellido">
 
-            <input
-                [(ngModel)]="segundoApellido"
-                name="segundoApellido"
-                placeholder="Segundo apellido">
+            <input [(ngModel)]="segundoApellido" name="segundoApellido" placeholder="Segundo apellido">
 
-            <input
-                type="number"
-                [(ngModel)]="edad"
-                name="edad"
-                placeholder="Edad">
+            <input type="number" [(ngModel)]="edad" name="edad" placeholder="Edad">
 
-            <input
-                type="email"
-                [(ngModel)]="correo"
-                name="correo"
-                placeholder="Correo">
+            <h3>
 
-            <input
-                type="password"
-                [(ngModel)]="contrasena"
-                name="contrasena"
-                placeholder="Contraseña">
+                Selecciona las discapacidades que poseas
 
-            <button
-                type="submit">
+            </h3>
+
+            <div *ngFor="let d of discapacidadesDisponibles">
+
+                <label>
+
+                    <input type="checkbox" [value]="d.idDiscapacidad"
+                        (change)="toggleDiscapacidad(d.idDiscapacidad,$event)">
+
+                    {{d.nombre}}
+
+                </label>
+
+            </div>
+
+            <input type="email" [(ngModel)]="correo" name="correo" placeholder="Correo">
+
+            <input type="password" [(ngModel)]="contrasena" name="contrasena" placeholder="Contraseña">
+
+            <button type="submit">
 
                 Registrarme
 
@@ -56,17 +49,13 @@
 
         </form>
 
-        <div
-            *ngIf="error"
-            class="error">
+        <div *ngIf="error" class="error">
 
             {{ error }}
 
         </div>
 
-        <div
-            *ngIf="mensaje"
-            class="success">
+        <div *ngIf="mensaje" class="success">
 
             {{ mensaje }}
 

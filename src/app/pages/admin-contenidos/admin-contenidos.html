@@ -1,0 +1,55 @@
+<h1>
+    Panel administrador
+</h1>
+
+
+<div>
+
+    <label>
+        ID Contenido:
+    </label>
+
+
+    <input type="number" [(ngModel)]="idContenido">
+
+
+    <button (click)="generarResumen()" [disabled]="cargando">
+
+
+        {{cargando
+        ? 'Generando...'
+        : 'Generar resumen'}}
+
+
+    </button>
+
+
+</div>
+
+
+
+<div class="modal" *ngIf="mostrarModal">
+
+
+    <div class="modal-content">
+
+
+        <h2>
+            Resumen del contenido
+        </h2>
+
+
+        <p>
+            {{resumen}}
+        </p>
+
+
+        <button (click)="cerrarModal()">
+            Cerrar
+        </button>
+
+
+    </div>
+
+
+</div>

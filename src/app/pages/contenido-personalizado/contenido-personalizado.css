@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-body {
+:host {
     background: #f5f5f5;
     font-family: Arial, Helvetica, sans-serif;
     color: #111;

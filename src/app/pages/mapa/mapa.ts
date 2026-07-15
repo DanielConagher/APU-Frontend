@@ -6,6 +6,9 @@ import { MapaAprendizaje } from '../../models/mapa-aprendizaje';
 import { Navbar } from '../../components/navbar/navbar';
 import { FooterComponent } from '../../components/footer/footer';
 
+import { MapaPersonalizado }
+  from '../../models/mapa-personalizado';
+
 @Component({
   selector: 'app-mapa-aprendizaje',
   standalone: true,
@@ -18,13 +21,20 @@ import { FooterComponent } from '../../components/footer/footer';
 })
 export class MapaAprendizajeComponent {
 
-  burbujas: MapaAprendizaje[] = [];
+  burbujas: any[] = [];
 
-  niveles: MapaAprendizaje[][] = [];
+  niveles: any[][] = [];
+
+  modoMapa: 'general' | 'personalizado' = 'general';
 
   nombreDesastre: string = '';
 
   idTipoDesastre = 0;
+
+  tipoMapa:
+    'general' | 'personalizado'
+    =
+    'general';
 
   nombreCompleto =
     localStorage.getItem(
@@ -50,18 +60,61 @@ export class MapaAprendizajeComponent {
 
     this.nombreDesastre = this.obtenerNombreDesastre(this.idTipoDesastre);
 
-    this.mapaService.obtenerMapa(this.idTipoDesastre)
-      .subscribe({
-        next: data => {
+    this.cargarMapa();
+
+
+
+  }
+
+  cargarMapa(): void {
+
+
+    if (this.modoMapa === 'general') {
+
+
+      this.mapaService
+        .obtenerMapa(this.idTipoDesastre)
+        .subscribe(data => {
 
           this.burbujas = data;
 
-          // 🔥 AGRUPACIÓN REAL POR NIVEL
-          this.niveles = this.agruparPorNivel(data);
-        }
-      });
+          this.niveles =
+            this.agruparPorNivel(data);
+
+        });
 
 
+    }
+    else {
+
+
+      this.mapaService
+        .obtenerMapaPersonalizado(
+          this.idTipoDesastre
+        )
+        .subscribe(data => {
+
+
+          this.burbujas = data;
+
+          this.niveles =
+            this.agruparPorNivel(data);
+
+
+        });
+
+
+    }
+
+  }
+
+  cambiarMapa(
+    modo: 'general' | 'personalizado'
+  ) {
+
+    this.modoMapa = modo;
+
+    this.cargarMapa();
 
   }
 
@@ -81,18 +134,75 @@ export class MapaAprendizajeComponent {
     // ordenado por numeroNivel
     return Array.from(mapa.entries())
       .sort((a, b) => a[0] - b[0])
-      .map(x => x[1]);
+      .map(([_, contenidos]) =>
+        contenidos.sort((a, b) => a.posicion - b.posicion)
+      );
   }
 
-  abrirContenido(burbuja: MapaAprendizaje): void {
+  abrirContenido(
+    burbuja: any
+  ): void {
 
-    if (burbuja.estado === 0) return;
 
-    this.router.navigate([
-      '/contenido',
-      burbuja.idContenido,
-      this.idTipoDesastre
-    ]);
+    if (burbuja.estado === 0)
+      return;
+
+
+
+    if (burbuja.esCuestionario) {
+
+
+      this.router.navigate([
+
+        '/cuestionario',
+
+        burbuja.idContenido,
+
+        this.idTipoDesastre
+
+      ]);
+
+
+    }
+
+    else {
+
+
+      if (this.modoMapa === 'general') {
+
+
+        this.router.navigate([
+
+          '/contenido',
+
+          burbuja.idContenido,
+
+          this.idTipoDesastre
+
+        ]);
+
+
+      }
+      else {
+
+
+        this.router.navigate([
+
+          '/contenido-personalizado',
+
+          burbuja.idContenido,
+
+          this.idTipoDesastre
+
+        ]);
+
+
+      }
+
+
+    }
+
+
   }
 
   volver(): void {

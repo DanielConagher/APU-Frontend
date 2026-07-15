@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
 
@@ -7,7 +10,9 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { AuthService }
-from '../../services/auth.service';
+  from '../../services/auth.service';
+
+import { Discapacidad } from '../../models/discapacidad';
 
 @Component({
 
@@ -30,7 +35,7 @@ from '../../services/auth.service';
   styleUrl: './register.css'
 
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
 
   primerNombre = '';
 
@@ -58,9 +63,60 @@ export class RegisterComponent {
 
   cargando = false;
 
+  discapacidadesDisponibles: Discapacidad[] = []
+
   constructor(
     private authService: AuthService
-  ) {}
+  ) { }
+
+  ngOnInit(): void {
+
+    this.authService
+
+      .obtenerDiscapacidades()
+
+      .subscribe({
+
+        next: data => {
+
+          this.discapacidadesDisponibles = data;
+
+        },
+
+        error: err => {
+
+          console.error(err);
+
+        }
+
+      });
+
+  }
+
+  toggleDiscapacidad(
+    id: number,
+    event: any
+  ): void {
+
+    if (event.target.checked) {
+
+      this.discapacidades.push(id);
+
+    }
+
+    else {
+
+      this.discapacidades =
+
+        this.discapacidades.filter(
+
+          x => x !== id
+
+        );
+
+    }
+
+  }
 
   registrar(): void {
 

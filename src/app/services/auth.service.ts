@@ -10,6 +10,8 @@ import {
 import { RegisterRequest } from '../models/register-request';
 import { AuthResponse } from '../models/auth-response';
 
+import { Discapacidad } from '../models/discapacidad';
+
 @Injectable({
     providedIn: 'root'
 })
@@ -43,5 +45,15 @@ export class AuthService {
             request
 
         );
+    }
+
+    obtenerDiscapacidades() {
+
+        return this.http.get<Discapacidad[]>(
+
+            'http://localhost:8080/discapacidades'
+
+        );
+
     }
 }

@@ -23,7 +23,7 @@
         </button>
 
         <!-- CONTENIDO -->
-        <main class="container">
+        <main class="container" [class.alto-contraste]="altoContraste">
 
             <div class="date">
                 Mayo 2026
@@ -35,6 +35,67 @@
 
             <div class="author">
                 Prevención de Desastres Naturales
+            </div>
+
+            <!-- ACCESIBILIDAD -->
+            <div class="accessibility-toolbar" *ngIf="contenido?.teoria?.trim()">
+
+                <button class="voice-btn" *ngIf="!leyendo" (click)="leerTeoria()">
+
+                    🔊 Escuchar
+
+                </button>
+
+                <button class="voice-btn" *ngIf="leyendo && !pausado" (click)="pausarLectura()">
+
+                    ⏸ Pausar
+
+                </button>
+
+                <button class="voice-btn" *ngIf="leyendo && pausado" (click)="reanudarLectura()">
+
+                    ▶ Continuar
+
+                </button>
+
+                <button class="voice-btn stop" *ngIf="leyendo" (click)="detenerLectura()">
+
+                    ⏹ Detener
+
+                </button>
+
+                <button class="pdf-btn" (click)="descargarPDF()">
+
+                    📄 Descargar PDF
+
+                </button>
+
+                <button class="contrast-btn" (click)="toggleAltoContraste()">
+
+                    {{ altoContraste
+                    ? '☀️ Modo normal'
+                    : '🌙 Alto contraste' }}
+
+                </button>
+
+                <button class="font-btn" (click)="disminuirFuente()">
+
+                    A−
+
+                </button>
+
+                <button class="font-btn" (click)="restablecerFuente()">
+
+                    A
+
+                </button>
+
+                <button class="font-btn" (click)="aumentarFuente()">
+
+                    A+
+
+                </button>
+
             </div>
 
             <!-- IMAGEN PRINCIPAL -->
@@ -54,8 +115,10 @@
                     Debemos entender casos anteriores de sismos en el Perú
                 </h2>
 
-                <p>
+                <p [style.font-size.px]="tamanoFuente">
+
                     {{ contenido?.teoria }}
+
                 </p>
 
             </section>
@@ -127,7 +190,7 @@
 
             </section>
 
-            <div class="acciones">
+            <div class="acciones" *ngIf="!contenido?.esCuestionario">
 
                 <button class="siguiente-btn" (click)="siguiente()">
 

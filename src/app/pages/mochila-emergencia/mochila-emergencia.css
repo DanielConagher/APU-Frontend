@@ -101,3 +101,275 @@
         padding: 15px;
     }
 }
+
+.acciones {
+
+    margin-top: 30px;
+
+    text-align: center;
+
+}
+
+
+.acciones button {
+
+    background: #2563eb;
+
+    color: white;
+
+    border: none;
+
+    padding: 12px 30px;
+
+    border-radius: 10px;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: .2s;
+
+}
+
+
+
+.acciones button:hover {
+
+    background: #1d4ed8;
+
+}
+
+.progreso {
+
+    margin-top: 20px;
+
+}
+
+
+.progreso-texto {
+
+    margin-bottom: 8px;
+
+    font-weight: bold;
+
+}
+
+
+.barra {
+
+    width: 100%;
+
+    height: 15px;
+
+    background: #e5e7eb;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+}
+
+
+.barra-completa {
+
+    height: 100%;
+
+    background: #22c55e;
+
+    transition: width .3s;
+
+}
+
+.tabs {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin: 25px 0;
+
+}
+
+.tabs button {
+
+    padding: 12px 25px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #e5e7eb;
+
+    cursor: pointer;
+
+    transition: .2s;
+
+    font-weight: bold;
+
+}
+
+.tabs button.activa {
+
+    background: #2563eb;
+
+    color: white;
+
+}
+
+.tabs button:hover {
+
+    opacity: .9;
+
+}
+
+.acciones-superiores {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin: 20px 0;
+
+}
+
+.btn-agregar {
+
+    background: #22c55e;
+
+    color: white;
+
+    border: none;
+
+    padding: 10px 20px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+}
+
+.btn-agregar:hover {
+
+    background: #16a34a;
+
+}
+
+.acciones-item {
+
+    margin-top: 15px;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+}
+
+.acciones-item button {
+
+    border: none;
+
+    background: #f3f4f6;
+
+    padding: 8px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+}
+
+.acciones-item button:hover {
+
+    background: #e5e7eb;
+
+}
+
+.modal-fondo {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, .45);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    z-index: 1000;
+
+}
+
+.modal {
+
+    background: white;
+
+    width: 420px;
+
+    max-width: 90%;
+
+    border-radius: 12px;
+
+    padding: 25px;
+
+}
+
+.modal h2 {
+
+    margin-bottom: 20px;
+
+}
+
+.modal label {
+
+    display: block;
+
+    margin-top: 15px;
+
+    margin-bottom: 5px;
+
+}
+
+.modal input {
+
+    width: 100%;
+
+    padding: 10px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+}
+
+.modal-botones {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 25px;
+
+}
+
+.cancelar {
+
+    background: #e5e7eb;
+
+}
+
+.guardar {
+
+    background: #2563eb;
+
+    color: white;
+
+}
