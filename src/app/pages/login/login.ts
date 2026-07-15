@@ -77,9 +77,21 @@ export class LoginComponent {
           response.idUsuario.toString()
         );
 
-        this.router.navigate(
-          ['/home']
-        );
+
+        if (response.rol === 'ADMINISTRADOR') {
+
+          this.router.navigate([
+            '/admin'
+          ]);
+
+        } else {
+
+          this.router.navigate([
+            '/home'
+          ]);
+
+        }
+
       },
 
       error: (err) => {

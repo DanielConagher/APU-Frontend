@@ -4,8 +4,15 @@ export interface Comentario {
 }
 
 export interface Contenido {
+
   teoria: string;
+
   imagenes: string[];
+
   videos: string[];
+
   comentarios: Comentario[];
+
+  esCuestionario: boolean;
+
 }
